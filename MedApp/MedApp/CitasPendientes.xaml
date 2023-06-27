@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedApp.CitasPendientes"
+             BackgroundColor="#112847">
+    <ContentPage.Content>
+        <ScrollView HeightRequest="3000">
+            <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+                <Label Text="Lista de Citas Pendientes" FontSize="22" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige"/>
+                <!--<ListView x:Name="SearchResultsListView" SeparatorColor="Red">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout>
+                                        <Label Text="{Binding Cita}" TextColor="Red" />
+                                        <Label Text="{Binding Hora}" TextColor="Red" />
+                                        <Label Text="{Binding Fecha}" TextColor="Red" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>-->
+                <ListView  x:Name="SearchResultsListView">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding Cita}"
+                                           TextColor="#03718c"
+                                           FontSize="14"/>
+                                        <Label Text="{Binding Hora}"
+                                           HorizontalOptions="EndAndExpand"
+                                           TextColor="#503026"
+                                           FontSize="14"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

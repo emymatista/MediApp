@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedApp.BuscarMedico"
+             BackgroundColor="#112847">
+    <ContentPage.Content>
+        <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
+            <Label Text="Busqueda de informacion del Medico" FontSize="22" FontFamily="MavenPro" TextColor="Beige"></Label>
+            <Entry Placeholder="Nombre del medico" x:Name="SearchEntry" />
+            <Picker Title="Especialidad">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Pediatria</x:String>
+                        <x:String>Gastroenterologia</x:String>
+                        <x:String>Ortopedia</x:String>
+                        <x:String>Medicina Familiar</x:String>
+                        <x:String>Ginecologia</x:String>
+                        <x:String>Estomatologia</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+            <Button Text="Buscar" 
+                    Clicked="Button_Clicked"
+                    TextColor="White"
+                    BackgroundColor="Transparent"
+                    BorderColor="Aqua"
+                    BorderWidth="1.5"
+                    CornerRadius="50"/>
+            <!--<Frame x:Name="frame" HasShadow="True" CornerRadius="20" Padding="0">
+                <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"></ColumnDefinition>
+                        <ColumnDefinition Width="*"></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0" Spacing="0" WidthRequest="100" BackgroundColor="Purple" Padding="10">
+                        <Label Text="{Binding Day}" FontAttributes="Bold" FontSize="20" TextColor="White"
+                               VerticalOptions="CenterAndExpand" HorizontalOptions="Center"></Label>
+                        <Label Text="{Binding Month}" TextColor="White" HorizontalOptions="Center" VerticalOptions="StartAndExpand"></Label>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="FillAndExpand">
+                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black"></Label>
+                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black"></Label>
+                    </StackLayout>
+                </Grid>
+            </Frame>-->
+            
+            <!--<ListView x:Name="SearchResultsListView" SeparatorColor="Red">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ImageCell Text="{Binding Nombre}"
+                                  Detail="{Binding Consultorio}"
+                                   ImageSource="{Binding ImageUrl}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
+            <ListView  x:Name="SearchResultsListView">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout BackgroundColor="#eee"
+                        Orientation="Vertical">
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="{Binding ImageUrl}" />
+                                    <Label Text="{Binding Nombre}"
+                                           TextColor="#03718c"
+                                           FontSize="14"/>
+                                    <Label Text="{Binding Consultorio}"
+                                           HorizontalOptions="EndAndExpand"
+                                           TextColor="#503026"
+                                           FontSize="14"/>
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

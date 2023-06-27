@@ -1,0 +1,85 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MedApp.ReservarCita"
+             BackgroundColor="#112847">
+    <ContentPage.Content>
+        <ScrollView HeightRequest="5000">
+            <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="15">
+                <Label Text="Crear Cita" FontSize="30" HorizontalOptions="Center" Margin="0,0,0,20" FontFamily="MavenPro" TextColor="Beige"/>
+                <Entry x:Name="NombrePaciente" Placeholder="Nombre del paciente" />
+                <Entry x:Name="ApellidosPaciente" Placeholder="Apellidos del paciente" />
+                <Entry x:Name="TelefonoPaciente" Keyboard="Numeric" Placeholder="Telefono del paciente" />
+                <Entry x:Name="EdadPaciente" Keyboard="Numeric" Placeholder="Edad del paciente" />
+
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="Fecha y hora de la cita" 
+                       FontSize="23"
+                       FontFamily="MavenPro"
+                       TextColor="Beige"/>
+                <DatePicker x:Name="appointmentDatePicker" />
+                <TimePicker x:Name="appointmentTimePicker" />
+                
+                <Label Text="" />
+                <Label Text="" />
+
+                <Label Text="Disponibilidad de atencion medica" 
+                       FontSize="23"
+                       FontFamily="MavenPro"
+                       TextColor="Beige"/>
+                <Picker Title="Especialidad">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Pediatria</x:String>
+                            <x:String>Gastroenterologia</x:String>
+                            <x:String>Ortopedia</x:String>
+                            <x:String>Medicina Familiar</x:String>
+                            <x:String>Ginecologia</x:String>
+                            <x:String>Estomatologia</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Button Text="Buscar"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        BorderColor="Aqua"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        Clicked="Button_Clicked"/>
+                <ListView x:Name="SearchResultsListView" SeparatorColor="Red" IsVisible="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout>
+                                        <Label Text="{Binding Nombre}" TextColor="Red" />
+                                        <Label Text="{Binding Hora}" TextColor="Red" />
+                                        <Label Text="{Binding consultorio}" TextColor="Red" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="" />
+                <Label Text="" />
+                
+                <Label Text="Motivo" 
+                       FontSize="23"
+                       FontFamily="MavenPro"
+                       TextColor="Beige"/>
+                <Editor x:Name="reasonEditor" Placeholder="Ingrese Motivo de cita" HeightRequest="100" />
+
+                <Button Text="Crear Cita" 
+                        HorizontalOptions="Center" 
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        BorderColor="Green"
+                        BorderWidth="1.5"
+                        CornerRadius="50"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
