@@ -1,12 +1,59 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MedApp.RegistrarUsuario">
+             x:Class="MedApp.RegistrarUsuario"
+             BackgroundColor="#112847">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Bienvenido a Registrar Usuario"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView HeightRequest="5000">
+            <StackLayout>
+                <Label Text="" />
+                <Label Text="" />
+                <Label Text="Nuevo Usuario" FontSize="30" HorizontalOptions="Center" Margin="0,0,0,20" FontFamily="MavenPro" TextColor="Beige"/>
+                <Entry x:Name="nombre" Placeholder="Insertar Nombre" />
+                <Entry x:Name="apellidos" Placeholder="Insertar Apellidos" />
+                <Entry x:Name="codigoUsuario" Placeholder="Insertar Codigo" />
+                <Entry x:Name="descrUsuario" Placeholder="Nombre de Usuario" />
+                <Entry x:Name="claveUsuario" Placeholder="Contraseña" />
+
+                <Label Text="" />
+
+                <Button Text="Check Connection"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        BorderColor="Green"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        Clicked="Button_Clicked"/>
+
+                <Label Text="" />
+                
+                <Button Text="Registrar"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        BorderColor="Green"
+                        BorderWidth="1.5"
+                        CornerRadius="50"
+                        Clicked="Button_Clicked_1"/>
+                <ListView x:Name="SearchResultsListView" SeparatorColor="Red" IsVisible="False">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ViewCell.View>
+                                    <StackLayout>
+                                        <Label Text="{Binding Nombre}" TextColor="Red" />
+                                        <Label Text="{Binding Hora}" TextColor="Red" />
+                                        <Label Text="{Binding consultorio}" TextColor="Red" />
+                                    </StackLayout>
+                                </ViewCell.View>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Label Text="" />
+                <Label Text="" />
+
+            </StackLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

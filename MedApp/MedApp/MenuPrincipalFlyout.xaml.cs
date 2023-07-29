@@ -20,7 +20,7 @@ namespace MedApp
         public MenuPrincipalFlyout()
         {
             InitializeComponent();
-
+            NavigationPage.SetHasBackButton(this, false);
             BindingContext = new MenuPrincipalFlyoutViewModel();
             ListView = MenuItemsListView;
         }

@@ -16,6 +16,7 @@ namespace MedApp
         public HistorialCitas()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
             List<HistorialInfo> myList = new List<HistorialInfo>
             {
                 new HistorialInfo{Cita="Cita 1", Fecha="28/6/2023", Hora="08:30"},

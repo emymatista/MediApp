@@ -16,6 +16,7 @@ namespace MedApp
         {
             InitializeComponent();
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;
+            NavigationPage.SetHasBackButton(this, false);
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

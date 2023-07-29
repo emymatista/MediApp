@@ -15,6 +15,7 @@ namespace MedApp
         public MenuPrincipalDetail()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
         }
     }
 }

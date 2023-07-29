@@ -16,6 +16,7 @@ namespace MedApp
         public CitasPendientes()
         {
             InitializeComponent();
+            NavigationPage.SetHasBackButton(this, false);
             List<CitaInfo> myList = new List<CitaInfo>
             {
                 new CitaInfo{Cita="Cita 1", Hora="08:30", Fecha="28/6/2023"},

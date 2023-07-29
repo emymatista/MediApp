@@ -19,7 +19,7 @@
                        FontFamily="MavenPro"
                    ></Label>
             </Grid>
-            <Entry x:Name="txtUsuario" Placeholder="Username" TextColor="White" PlaceholderColor="Gray"></Entry>
+            <Entry x:Name="txtUsuario"  Placeholder="Username" TextColor="White" PlaceholderColor="Gray"></Entry>
             <Entry x:Name="txtContrasena" Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray"></Entry>
             <Button
                 VerticalOptions="Center"
@@ -31,6 +31,9 @@
                 CornerRadius="50"
                 Clicked="Button_Clicked"
                 ></Button>
+            
+            <Label Text="" />
+            <Label Text="" />
 
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
