@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MedApp.Datos;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
@@ -13,27 +14,21 @@ namespace MedApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class RegistrarUsuario : ContentPage
     {
-        SqlConnection sqlConnection;
         public RegistrarUsuario()
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
-            string srvrdbname = "MediApp";
-            string srvrname = "10.0.0.79";
-            string srvrusername = "medapp";
-            string srvrpassword = "1234";
-
-            string sqlconn = $"Data Source={srvrname};Initial Catalog={srvrdbname}; User ID={srvrusername};Password={srvrpassword}";
-            sqlConnection = new SqlConnection(sqlconn);
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
+            SqlConnection con = null;
             try
             {
-                sqlConnection.Open();
+                con = Conexion.getInstance().ConexionBD();
+                con.Open();
                 await DisplayAlert("Success", "Conectado", "Ok");
-                sqlConnection.Close();
+                con.Close();
             }
             catch (Exception ex)
             {
@@ -45,34 +40,44 @@ namespace MedApp
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            try
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+            using (con = Conexion.getInstance().ConexionBD()) 
             {
-                sqlConnection.Open();
-                using (SqlCommand command = new SqlCommand("INSERT INTO dbo.usuario VALUES(@nombre, @apellidos, @codigocli, @descrUsuario," +
-                    "@claveUsuario)", sqlConnection))
+                using (cmd = new SqlCommand("spRegistrarUsuario", con))
                 {
-                    command.Parameters.Add(new SqlParameter("nombre", nombre.Text));
-                    command.Parameters.Add(new SqlParameter("apellidos", apellidos.Text));
-                    command.Parameters.Add(new SqlParameter("codigocli", codigoUsuario.Text));
-                    command.Parameters.Add(new SqlParameter("descrUsuario", descrUsuario.Text));
-                    command.Parameters.Add(new SqlParameter("claveUsuario", claveUsuario.Text));
-                    command.ExecuteNonQuery();
+                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                    cmd.Parameters.AddWithValue("@prmNombre", nombre.Text);
+                    cmd.Parameters.AddWithValue("@prmApellidos", apellidos.Text);
+                    cmd.Parameters.AddWithValue("@prmCodigoCli", codigoUsuario.Text);
+                    cmd.Parameters.AddWithValue("@prmDescrUsuario", descrUsuario.Text);
+                    cmd.Parameters.AddWithValue("@prmClaveUsuario", claveUsuario.Text);
+
+                    try
+                    {
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        await DisplayAlert("Error", ex.Message, "Ok");
+                        throw;
+                    }
+                    finally 
+                    {
+                        con.Close();
+                        await DisplayAlert("Success", "Datos registrados con exito", "Ok");
+
+                        nombre.Text = "";
+                        apellidos.Text = "";
+                        codigoUsuario.Text = "";
+                        descrUsuario.Text = "";
+                        claveUsuario.Text = "";
+
+                        await Navigation.PushAsync(new Login());
+                    }
                 }
-                sqlConnection.Close();
-                await DisplayAlert("Success", "Datos registrados con exito", "Ok");
-
-                nombre.Text = "";
-                apellidos.Text = "";
-                codigoUsuario.Text = "";
-                descrUsuario.Text = "";
-                claveUsuario.Text = "";
-
-                await Navigation.PushAsync(new Login());
-            }
-            catch (Exception ex)
-            {
-                await DisplayAlert("Error", ex.Message, "Ok");
-                throw;
             }
         }
     }

@@ -30,12 +30,10 @@ namespace MedApp
 
             if (isAuthenticated)
             {
-                // Navigate to the main app page on successful login.
                 await Navigation.PushAsync(new MenuPrincipal());
             }
             else
             {
-                // Show an error message or display a message that login failed.
                 await DisplayAlert("Error", "Nombre usuario o contraseña incorrecta", "OK");
             }
 
@@ -54,6 +52,11 @@ namespace MedApp
         private async void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new RegistrarUsuario());
+        }
+
+        private void switchShowPassword_Toggled(object sender, ToggledEventArgs e)
+        {
+            txtContrasena.IsPassword = !e.Value;
         }
     }
 }

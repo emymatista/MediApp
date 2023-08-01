@@ -21,6 +21,15 @@
             </Grid>
             <Entry x:Name="txtUsuario"  Placeholder="Username" TextColor="White" PlaceholderColor="Gray"></Entry>
             <Entry x:Name="txtContrasena" Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray"></Entry>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Label Text="Mostrar Contraseña" Grid.Column="0" VerticalTextAlignment="Center" FontFamily="MavenPro"/>
+                <Switch x:Name="switchShowPassword" Grid.Column="1" Toggled="switchShowPassword_Toggled"/>
+            </Grid>
+            <Label Text="" />
             <Button
                 VerticalOptions="Center"
                 Text="Login"
@@ -38,8 +47,8 @@
             <Label HorizontalOptions="Center">
                 <Label.FormattedText>
                     <FormattedString>
-                        <Span Text="No tiene una cuenta? " TextColor="Gray"/>
-                        <Span Text="Registrar" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline"/>
+                        <Span Text="No tiene una cuenta? " TextColor="Gray" FontFamily="MavenPro"/>
+                        <Span Text="Registrar" TextColor="Gray" FontAttributes="Bold" TextDecorations="Underline" FontFamily="MavenPro"/>
                     </FormattedString>
                 </Label.FormattedText>
                 <Label.GestureRecognizers>

@@ -22,20 +22,20 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="10"/>
           </Grid.RowDefinitions>
-          <Label
+                    <Label
               Grid.Column="1"
               Grid.Row="2"
               Text="MediApp"
               FontSize="30"
               Style="{DynamicResource SubtitleStyle}"
               FontFamily="MavenPro"/>
-        </Grid>
+                </Grid>
       </ListView.Header>
       <ListView.ItemTemplate>
-        <DataTemplate>
-          <ViewCell>
-            <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
-              <!--<Label VerticalOptions="FillAndExpand" 
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Padding="15,10" HorizontalOptions="FillAndExpand">
+                            <!--<Label VerticalOptions="FillAndExpand" 
                     VerticalTextAlignment="Center" 
                     Text="{Binding Title}" 
                     FontSize="24"/>-->
@@ -48,9 +48,13 @@
                                 <Label Grid.Column="1" Text="{Binding Title}" FontSize="23" FontFamily="MavenPro" TextColor="Beige"></Label>
                             </Grid>
                         </StackLayout>
-          </ViewCell>
-        </DataTemplate>
-      </ListView.ItemTemplate>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
     </ListView>
-  </StackLayout>
+        <Button Text="Salir"
+                TextColor="Wheat"
+                Clicked="Button_Clicked">
+        </Button>
+    </StackLayout>
 </ContentPage>

@@ -26,6 +26,7 @@
                     BorderColor="Aqua"
                     BorderWidth="1.5"
                     CornerRadius="50"/>
+            
             <!--<Frame x:Name="frame" HasShadow="True" CornerRadius="20" Padding="0">
                 <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand">
                     <Grid.ColumnDefinitions>
@@ -42,9 +43,9 @@
                         <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black"></Label>
                     </StackLayout>
                 </Grid>
-            </Frame>-->
+            </Frame>
             
-            <!--<ListView x:Name="SearchResultsListView" SeparatorColor="Red">
+            <ListView x:Name="SearchResultsListView" SeparatorColor="Red">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ImageCell Text="{Binding Nombre}"
@@ -53,7 +54,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>-->
-            <ListView  x:Name="SearchResultsListView">
+
+            <ListView x:Name="SearchResultsListView">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

@@ -13,7 +13,7 @@
                 <Entry x:Name="apellidos" Placeholder="Insertar Apellidos" />
                 <Entry x:Name="codigoUsuario" Placeholder="Insertar Codigo" />
                 <Entry x:Name="descrUsuario" Placeholder="Nombre de Usuario" />
-                <Entry x:Name="claveUsuario" Placeholder="Contraseña" />
+                <Entry x:Name="claveUsuario" Placeholder="Contraseña" IsPassword="True"/>
 
                 <Label Text="" />
 

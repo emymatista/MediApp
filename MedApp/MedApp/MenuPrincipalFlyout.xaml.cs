@@ -37,7 +37,6 @@ namespace MedApp
                     new MenuPrincipalFlyoutMenuItem { Id = 1, Title = "Reservar Cita", IconSource="Reserva.png", TargetType=typeof(ReservarCita) },
                     new MenuPrincipalFlyoutMenuItem { Id = 2, Title = "Citas pendientes", IconSource="Pendiente.png", TargetType=typeof(CitasPendientes) },
                     new MenuPrincipalFlyoutMenuItem { Id = 3, Title = "Historial de Citas", IconSource="Historial.png", TargetType=typeof(HistorialCitas)},
-                    new MenuPrincipalFlyoutMenuItem { Id = 4, Title = "Salir", IconSource="logout.png", TargetType=typeof(Login)},
                 });
             }
 
@@ -51,6 +50,12 @@ namespace MedApp
                 PropertyChanged.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
             #endregion
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            //App.IsUserLoggedIn = false;
+            await Navigation.PushAsync(new Login());
         }
     }
 }

@@ -3,14 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MedApp.ReservarCita"
              BackgroundColor="#112847">
+
     <ContentPage.Content>
         <ScrollView HeightRequest="5000">
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="15">
                 <Label Text="Crear Cita" FontSize="30" HorizontalOptions="Center" Margin="0,0,0,20" FontFamily="MavenPro" TextColor="Beige"/>
-                <Entry x:Name="NombrePaciente" Placeholder="Nombre del paciente" />
-                <Entry x:Name="ApellidosPaciente" Placeholder="Apellidos del paciente" />
+                <Label Text="" />
+                <Label Text="Datos del paciente" 
+                       FontSize="23"
+                       FontFamily="MavenPro"
+                       TextColor="Beige"/>
                 <Entry x:Name="TelefonoPaciente" Keyboard="Numeric" Placeholder="Telefono del paciente" />
-                <Entry x:Name="EdadPaciente" Keyboard="Numeric" Placeholder="Edad del paciente" />
 
                 <Label Text="" />
                 <Label Text="" />
@@ -18,34 +21,26 @@
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <DatePicker x:Name="appointmentDatePicker" />
-                <TimePicker x:Name="appointmentTimePicker" />
-                
-                <Label Text="" />
-                <Label Text="" />
+                <DatePicker x:Name="fechaCita" DateSelected="fechaCita_DateSelected" />
+                <TimePicker x:Name="horaCita" Format="T"/>
 
-                <Label Text="Disponibilidad de atencion medica" 
+                <Label Text="" />
+                <Label Text="" />
+                
+                <Label Text="Seleccionar Medico" 
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <Picker Title="Especialidad">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Pediatria</x:String>
-                            <x:String>Gastroenterologia</x:String>
-                            <x:String>Ortopedia</x:String>
-                            <x:String>Medicina Familiar</x:String>
-                            <x:String>Ginecologia</x:String>
-                            <x:String>Estomatologia</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Picker x:Name="pkEspecialidad" Title="Especialidad" IsVisible="False"></Picker>
+                <Picker x:Name="pkMedico" Title="Nombre Medico"></Picker>
                 <Button Text="Buscar"
-                        TextColor="White"
+                        TextColor="White"         
+                        HorizontalOptions="Center"
                         BackgroundColor="Transparent"
                         BorderColor="Aqua"
                         BorderWidth="1.5"
                         CornerRadius="50"
+                        IsVisible="False"
                         Clicked="Button_Clicked"/>
                 <ListView x:Name="SearchResultsListView" SeparatorColor="Red" IsVisible="False">
                     <ListView.ItemTemplate>
@@ -65,20 +60,29 @@
 
                 <Label Text="" />
                 <Label Text="" />
+                <Label Text="Nro. de usuario" 
+                       FontSize="23"
+                       FontFamily="MavenPro"
+                       TextColor="Beige"/>
+                <Entry x:Name="IdUsuario" Keyboard="Numeric" Placeholder="Nro. Usuario" />
+                <Entry x:Name="IdMedico" Keyboard="Numeric" Placeholder="Nro. Medico" IsVisible="False"/>
+
+                <Label Text="" />
+                <Label Text="" />
                 
                 <Label Text="Motivo" 
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <Editor x:Name="reasonEditor" Placeholder="Ingrese Motivo de cita" HeightRequest="100" />
+                <Editor x:Name="txtMotivo" Placeholder="Ingrese Motivo de cita" HeightRequest="100" />
 
-                <Button Text="Crear Cita" 
-                        HorizontalOptions="Center" 
+                <Button Text="Crear Cita"  
                         TextColor="White"
                         BackgroundColor="Transparent"
                         BorderColor="Green"
                         BorderWidth="1.5"
-                        CornerRadius="50"/>
+                        CornerRadius="50"
+                        Clicked="Button_Clicked_1"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
