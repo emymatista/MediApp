@@ -31,7 +31,7 @@
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <Picker x:Name="pkEspecialidad" Title="Especialidad" IsVisible="False"></Picker>
+                <Picker x:Name="pkEspecialidad" Title="Especialidad" SelectedIndexChanged="pkEspecialidad_SelectedIndexChanged"></Picker>
                 <Picker x:Name="pkMedico" Title="Nombre Medico"></Picker>
                 <Button Text="Buscar"
                         TextColor="White"         
