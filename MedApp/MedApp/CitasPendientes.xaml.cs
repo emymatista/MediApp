@@ -13,7 +13,8 @@ namespace MedApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class CitasPendientes : ContentPage
     {
-        public CitasPendientes()
+        private int userId;
+        public CitasPendientes(int loggedInUserId)
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
@@ -31,6 +32,9 @@ namespace MedApp
                 new CitaInfo{Cita="Cita 10", Hora="15:00", Fecha="19/7/2023"},
             };
             SearchResultsListView.ItemsSource = myList;
+
+            userId = loggedInUserId;
+
         }
     }
 }

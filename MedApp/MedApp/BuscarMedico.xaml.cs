@@ -13,10 +13,13 @@ namespace MedApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BuscarMedico : ContentPage
     {
-        public BuscarMedico()
+        private int userId;
+        public BuscarMedico(int loggedInUserId)
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
+
+            userId = loggedInUserId;
 
         }
 

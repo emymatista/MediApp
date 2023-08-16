@@ -9,8 +9,8 @@
   <FlyoutPage.Detail>
     <NavigationPage>
       <x:Arguments>
-        <pages:MenuPrincipalDetail />
-      </x:Arguments>
+                <pages:MenuPrincipalDetail />
+            </x:Arguments>
     </NavigationPage>
   </FlyoutPage.Detail>
 </FlyoutPage>

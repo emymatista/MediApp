@@ -22,13 +22,17 @@ namespace MedApp
         private TimeSpan selectedTime;
         private List<Especialidad> opEspecialidad;
         private List<Medico> opMedico;
-        public ReservarCita()
+        private int userId;
+        public ReservarCita(int loggedInUserId)
         {
             InitializeComponent();
             horaCita.PropertyChanged += OnTimePickerPropertyChanged;
             
             opEspecialidad = listarEspecialidades();
             pkEspecialidad.ItemsSource = opEspecialidad;
+
+            userId = loggedInUserId;
+
         }
 
         private void OnTimePickerPropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
@@ -74,7 +78,7 @@ namespace MedApp
                     cmd.Parameters.AddWithValue("@prmHora", timeString);
                     cmd.Parameters.AddWithValue("@prmMotivo", txtMotivo.Text);
                     cmd.Parameters.AddWithValue("@prmIdMedico", medicoSelecId);
-                    cmd.Parameters.AddWithValue("@prmIdUsuario", Convert.ToInt32(IdUsuario.Text));
+                    cmd.Parameters.AddWithValue("@prmIdUsuario", userId);
 
                     try
                     {
@@ -94,7 +98,6 @@ namespace MedApp
                         TelefonoPaciente.Text = "";
                         txtMotivo.Text = "";
                         IdMedico.Text = "";
-                        IdUsuario.Text = "";
                         await Navigation.PushAsync(new MenuPrincipalDetail());
                     }
                 }

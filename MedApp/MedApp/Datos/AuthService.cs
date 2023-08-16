@@ -3,45 +3,60 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
-using BCrypt;
 
 namespace MedApp.Datos
 {
     public class AuthService
     {
-        public async Task<bool> LoginAsync(string username, string password)
+        private Usuario loggedInUser;
+
+        public async Task<Usuario> LoginAsync(string username, string password)
+        {
+            int userId = await GetUserIdFromDatabase(username, password);
+
+            if (userId != 0)
+            {
+                loggedInUser = new Usuario
+                {
+                    idUsuario = userId,
+                    usuario = username,
+                    password = password
+                };
+
+                return loggedInUser;
+            }
+
+            return null;
+        }
+
+        private async Task<int> GetUserIdFromDatabase(string username, string password)
         {
             SqlConnection con = null;
             SqlCommand cmd = null;
-
             try
             {
                 using (con = Conexion.getInstance().ConexionBD())
                 {
                     await con.OpenAsync();
 
-                    using (cmd = new SqlCommand("SELECT claveUsuario FROM usuario WHERE descrUsuario = @descrUsuario", con))
+                    string query = "SELECT idUsuario FROM usuario WHERE descrUsuario = @descrUsuario AND claveUsuario = @claveUsuario";
+
+                    using (cmd = new SqlCommand(query, con))
                     {
                         cmd.Parameters.AddWithValue("@descrUsuario", username);
-                        var hashedPassword = (string)await cmd.ExecuteScalarAsync();
+                        cmd.Parameters.AddWithValue("@claveUsuario", password);
 
-                        if (hashedPassword != null)
-                        {
-                            if (password == hashedPassword)
-                            {
-                                return true;
-                            }
-                        }
+                        int userID = (int)cmd.ExecuteScalar();
+
+                        return userID;
                     }
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Error durante login: " + ex.Message);
-                throw;
+                throw ex;
             }
 
-            return false;
         }
     }
 }

@@ -13,33 +13,40 @@ namespace MedApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class Login : ContentPage
     {
+        private AuthService authService;
         public Login()
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
+            authService = new AuthService();
         }
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            string usuario = txtUsuario.Text;
-            string contrasena = txtContrasena.Text;
-
-            AuthService authService = new AuthService();
-
-            bool isAuthenticated = await authService.LoginAsync(usuario, contrasena);
-
-            if (isAuthenticated)
+            try
             {
-                await Navigation.PushAsync(new MenuPrincipal());
+                string usuario = txtUsuario.Text;
+                string contrasena = txtContrasena.Text;
+
+                Usuario loggedInUser = await authService.LoginAsync(usuario, contrasena);
+
+                if (loggedInUser != null)
+                {
+                    await Navigation.PushAsync(new MenuPrincipal(loggedInUser.idUsuario));
+                }
+                else
+                {
+                    await DisplayAlert("Vaya...", "Nombre usuario o contraseña incorrecta", "OK");
+                }
+
             }
-            else
+            catch (Exception ex)
             {
-                await DisplayAlert("Error", "Nombre usuario o contraseña incorrecta", "OK");
+                await DisplayAlert("Vaya...", "Nombre usuario o contraseña incorrecta", "OK");
+                return;
             }
 
-            /*
-            //await Navigation.PushAsync(new MenuPrincipal());
-            
+            /*            
             if (txtUsuario.Text == "admin" && txtContrasena.Text == "123")
                 await Navigation.PushAsync(new MenuPrincipal());
             else

@@ -12,11 +12,14 @@ namespace MedApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MenuPrincipal : FlyoutPage
     {
-        public MenuPrincipal()
+        private int userId;
+        public MenuPrincipal(int loggedInUserId)
         {
             InitializeComponent();
             FlyoutPage.ListView.ItemSelected += ListView_ItemSelected;
             NavigationPage.SetHasBackButton(this, false);
+            userId = loggedInUserId;
+
         }
 
         private void ListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -25,7 +28,7 @@ namespace MedApp
             if (item == null)
                 return;
 
-            var page = (Page)Activator.CreateInstance(item.TargetType);
+            var page = (Page)Activator.CreateInstance(item.TargetType, userId);
             page.Title = item.Title;
 
             Detail = new NavigationPage(page);

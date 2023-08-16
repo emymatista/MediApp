@@ -9,7 +9,7 @@
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="15">
                 <Label Text="Crear Cita" FontSize="30" HorizontalOptions="Center" Margin="0,0,0,20" FontFamily="MavenPro" TextColor="Beige"/>
                 <Label Text="" />
-                <Label Text="Datos del paciente" 
+                <Label Text="Numero a contactar" 
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
@@ -57,16 +57,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-
-                <Label Text="" />
-                <Label Text="" />
-                <Label Text="Nro. de usuario" 
-                       FontSize="23"
-                       FontFamily="MavenPro"
-                       TextColor="Beige"/>
-                <Entry x:Name="IdUsuario" Keyboard="Numeric" Placeholder="Nro. Usuario" />
                 <Entry x:Name="IdMedico" Keyboard="Numeric" Placeholder="Nro. Medico" IsVisible="False"/>
-
                 <Label Text="" />
                 <Label Text="" />
                 
@@ -87,3 +78,4 @@
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
+            

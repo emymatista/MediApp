@@ -13,7 +13,8 @@ namespace MedApp
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HistorialCitas : ContentPage
     {
-        public HistorialCitas()
+        private int userId;
+        public HistorialCitas(int loggedInUserId)
         {
             InitializeComponent();
             NavigationPage.SetHasBackButton(this, false);
@@ -26,6 +27,9 @@ namespace MedApp
                 new HistorialInfo{Cita="Cita 5", Fecha="7/7/2023", Hora="08:30"}
             };
             SearchResultsListView.ItemsSource = myList;
+
+            userId = loggedInUserId;
+
         }
     }
 }
