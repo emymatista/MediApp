@@ -59,6 +59,7 @@ namespace MedApp
             */         
         }
 
+        
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             SqlConnection con = null;
@@ -103,7 +104,7 @@ namespace MedApp
                 }
             }
         }
-
+        
         private void fechaCita_DateSelected(object sender, DateChangedEventArgs e)
         {
             selectedDate = e.NewDate;
