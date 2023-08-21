@@ -27,7 +27,7 @@ namespace MedApp
         {
             InitializeComponent();
             horaCita.PropertyChanged += OnTimePickerPropertyChanged;
-            
+
             opEspecialidad = listarEspecialidades();
             pkEspecialidad.ItemsSource = opEspecialidad;
 
@@ -56,10 +56,10 @@ namespace MedApp
                 new HorarioMedico{Nombre="Alan Brito", Hora="15:30", consultorio="512"},
             };
             SearchResultsListView.ItemsSource = myList;
-            */         
+            */
         }
 
-        
+
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
             SqlConnection con = null;
@@ -104,7 +104,7 @@ namespace MedApp
                 }
             }
         }
-        
+
         private void fechaCita_DateSelected(object sender, DateChangedEventArgs e)
         {
             selectedDate = e.NewDate;
@@ -116,7 +116,7 @@ namespace MedApp
             pkMedico.ItemsSource = opMedico;
         }
 
-        private List<Especialidad> listarEspecialidades() 
+        private List<Especialidad> listarEspecialidades()
         {
             List<Especialidad> especialidad = new List<Especialidad>();
             SqlConnection con = null;

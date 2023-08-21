@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              x:Class="MedApp.ReservarCita"
              BackgroundColor="#112847">
 
     <ContentPage.Content>
-        <ScrollView HeightRequest="5000">
+        <ScrollView HeightRequest="10000">
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Spacing="15">
                 <Label Text="Crear Cita" FontSize="30" HorizontalOptions="Center" Margin="0,0,0,20" FontFamily="MavenPro" TextColor="Beige"/>
                 <Label Text="" />
@@ -13,7 +14,13 @@
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <Entry x:Name="TelefonoPaciente" Keyboard="Numeric" Placeholder="Telefono del paciente" />
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Entry x:Name="TelefonoPaciente" Keyboard="Numeric" Placeholder="Telefono del paciente" />
+                </Frame>
+                
 
                 <Label Text="" />
                 <Label Text="" />
@@ -21,18 +28,41 @@
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <DatePicker x:Name="fechaCita" DateSelected="fechaCita_DateSelected" />
-                <TimePicker x:Name="horaCita" Format="T"/>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <DatePicker x:Name="fechaCita" DateSelected="fechaCita_DateSelected" MinimumDate="{x:Static sys:DateTime.Today}"/>
+                </Frame>
+
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <TimePicker x:Name="horaCita" Format="T"/>
+                </Frame>
+                
 
                 <Label Text="" />
                 <Label Text="" />
-                
+
                 <Label Text="Seleccionar Medico" 
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <Picker x:Name="pkEspecialidad" Title="Especialidad" SelectedIndexChanged="pkEspecialidad_SelectedIndexChanged"></Picker>
-                <Picker x:Name="pkMedico" Title="Nombre Medico"></Picker>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Picker x:Name="pkEspecialidad" Title="Especialidad" SelectedIndexChanged="pkEspecialidad_SelectedIndexChanged"></Picker>
+                </Frame>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Picker x:Name="pkMedico" Title="Nombre Medico"></Picker>
+                </Frame>
+                
                 <Button Text="Buscar"
                         TextColor="White"         
                         HorizontalOptions="Center"
@@ -60,12 +90,18 @@
                 <Entry x:Name="IdMedico" Keyboard="Numeric" Placeholder="Nro. Medico" IsVisible="False"/>
                 <Label Text="" />
                 <Label Text="" />
-                
+
                 <Label Text="Motivo" 
                        FontSize="23"
                        FontFamily="MavenPro"
                        TextColor="Beige"/>
-                <Editor x:Name="txtMotivo" Placeholder="Ingrese Motivo de cita" HeightRequest="100" />
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="10"
+                       Padding="5">
+                    <Editor x:Name="txtMotivo" Placeholder="Ingrese Motivo de cita" HeightRequest="100" />
+                </Frame>
+                
 
                 <Button Text="Crear Cita"  
                         TextColor="White"
