@@ -6,19 +6,15 @@
     <ContentPage.Content>
         <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
             <Label Text="Busqueda de informacion del Medico" FontSize="22" FontFamily="MavenPro" TextColor="Beige"></Label>
-            <Entry Placeholder="Nombre del medico" x:Name="SearchEntry" />
-            <Picker Title="Especialidad">
-                <Picker.ItemsSource>
-                    <x:Array Type="{x:Type x:String}">
-                        <x:String>Pediatria</x:String>
-                        <x:String>Gastroenterologia</x:String>
-                        <x:String>Ortopedia</x:String>
-                        <x:String>Medicina Familiar</x:String>
-                        <x:String>Ginecologia</x:String>
-                        <x:String>Estomatologia</x:String>
-                    </x:Array>
-                </Picker.ItemsSource>
-            </Picker>
+            <Label Text=""/>
+            <!--<Entry Placeholder="Nombre del medico" x:Name="SearchEntry" /> -->
+            <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                <Picker x:Name="pkEspecialidad" Title="Especialidad"></Picker>
+            </Frame>
+            <Label Text=""/>
             <Button Text="Buscar" 
                     Clicked="Button_Clicked"
                     TextColor="White"
@@ -26,50 +22,28 @@
                     BorderColor="Aqua"
                     BorderWidth="1.5"
                     CornerRadius="50"/>
-            
-            <!--<Frame x:Name="frame" HasShadow="True" CornerRadius="20" Padding="0">
-                <Grid HorizontalOptions="FillAndExpand" BackgroundColor="White" VerticalOptions="FillAndExpand">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"></ColumnDefinition>
-                        <ColumnDefinition Width="*"></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <StackLayout Grid.Column="0" Spacing="0" WidthRequest="100" BackgroundColor="Purple" Padding="10">
-                        <Label Text="{Binding Day}" FontAttributes="Bold" FontSize="20" TextColor="White"
-                               VerticalOptions="CenterAndExpand" HorizontalOptions="Center"></Label>
-                        <Label Text="{Binding Month}" TextColor="White" HorizontalOptions="Center" VerticalOptions="StartAndExpand"></Label>
-                    </StackLayout>
-                    <StackLayout Grid.Column="1" HorizontalOptions="FillAndExpand" Padding="10" VerticalOptions="FillAndExpand">
-                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black"></Label>
-                        <Label Text="{Binding Name}" FontAttributes="Bold" TextColor="Black"></Label>
-                    </StackLayout>
-                </Grid>
-            </Frame>
-            
-            <ListView x:Name="SearchResultsListView" SeparatorColor="Red">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ImageCell Text="{Binding Nombre}"
-                                  Detail="{Binding Consultorio}"
-                                   ImageSource="{Binding ImageUrl}"/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
 
-            <ListView x:Name="SearchResultsListView">
+            <Label Text="" />
+            <ListView x:Name="SearchResultsListView"
+                      HasUnevenRows="True">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout BackgroundColor="#eee"
-                        Orientation="Vertical">
-                                <StackLayout Orientation="Horizontal">
-                                    <Image Source="{Binding ImageUrl}" />
-                                    <Label Text="{Binding Nombre}"
-                                           TextColor="#03718c"
-                                           FontSize="14"/>
-                                    <Label Text="{Binding Consultorio}"
-                                           HorizontalOptions="EndAndExpand"
-                                           TextColor="#503026"
-                                           FontSize="14"/>
+                            <StackLayout Orientation="Vertical">
+                                <Grid BackgroundColor="#112847"
+                                      HeightRequest="10"/>
+                                <StackLayout Orientation="Vertical" Padding="20" BackgroundColor="Gainsboro">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding nombre}" FontAttributes="None" TextColor="Black" FontSize="Large" FontFamily="MavenPro"/>
+                                                <Span Text=" " FontAttributes="None" TextColor="Black" FontSize="Large" FontFamily="MavenPro"/>
+                                                <Span Text="{Binding apellidos}" FontAttributes="None" TextColor="Black" FontSize="Large" FontFamily="MavenPro"/>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label Text="{Binding especialidad}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
+                                    <Label Text="{Binding consultorio, StringFormat='Consultorio: {0}'}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
                                 </StackLayout>
                             </StackLayout>
                         </ViewCell>
