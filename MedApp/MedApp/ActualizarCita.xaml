@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="MedApp.CitasPendientes"
+             x:Class="MedApp.ActualizarCita"
              BackgroundColor="#112847">
     <ContentPage.Content>
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                <Label Text="Lista de Citas Pendientes" FontSize="22" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige"/>
+                <Label Text="Elige la cita que desea modificar" FontSize="22" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige"/>
                 <!--
                 <ListView  x:Name="SearchResultsListView">
                     <ListView.ItemTemplate>
@@ -32,7 +32,8 @@
 
                 <Label Text="" />
                 <ListView x:Name="SearchResultsListView"
-                      HasUnevenRows="True">
+                          HasUnevenRows="True"
+                          ItemSelected="SearchResultsListView_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -40,6 +41,7 @@
                                     <Grid BackgroundColor="#112847"
                                       HeightRequest="10"/>
                                     <StackLayout Orientation="Vertical" Padding="20" BackgroundColor="Gainsboro">
+                                        <Label Text="{Binding telefono}" FontSize="17" TextColor="Black" FontFamily="MavenPro" IsVisible="False"/>
                                         <Label Text="{Binding fecha}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
                                         <Label Text="{Binding hora}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
                                         <Label Text="{Binding motivo}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>

@@ -1,5 +1,4 @@
-﻿using MedApp.DataModel;
-using MedApp.Datos;
+﻿using MedApp.Datos;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -14,14 +13,12 @@ using Xamarin.Forms.Xaml;
 namespace MedApp
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CitasPendientes : ContentPage
+    public partial class ActualizarCita : ContentPage
     {
         private int userId;
-        public CitasPendientes(int loggedInUserId)
+        public ActualizarCita(int loggedInUserId)
         {
             InitializeComponent();
-            NavigationPage.SetHasBackButton(this, false);
-
             userId = loggedInUserId;
 
             List<ListarCitas> citas = ListarCitas();
@@ -58,6 +55,7 @@ namespace MedApp
                                     motivo = reader["motivo"].ToString(),
                                     nombre = reader["nombre"].ToString(),
                                     apellidos = reader["apellidos"].ToString(),
+                                    telefono = reader["telefono"].ToString(),
                                 });
 
                             }
@@ -72,6 +70,21 @@ namespace MedApp
                 DisplayAlert("Error", ex.Message, "Ok");
                 throw;
             }
+        }
+
+        private async void SearchResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            //await DisplayAlert("Alerta", "Cita Seleccionada", "Ok");
+            
+            if (e.SelectedItem == null)
+                return;
+
+            var citaSeleccionada = e.SelectedItem as ListarCitas;
+            SearchResultsListView.SelectedItem = null; 
+
+            // Navigate to the update page with the selected item's information
+           await Navigation.PushAsync(new PantallaModificar(citaSeleccionada));
+            
         }
     }
 }

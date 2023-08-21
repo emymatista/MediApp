@@ -37,6 +37,7 @@ namespace MedApp
                     new MenuPrincipalFlyoutMenuItem { Id = 1, Title = "Reservar Cita", IconSource="Reserva.png", TargetType=typeof(ReservarCita) },
                     new MenuPrincipalFlyoutMenuItem { Id = 2, Title = "Citas pendientes", IconSource="Pendiente.png", TargetType=typeof(CitasPendientes) },
                     new MenuPrincipalFlyoutMenuItem { Id = 3, Title = "Historial de Citas", IconSource="Historial.png", TargetType=typeof(HistorialCitas)},
+                    new MenuPrincipalFlyoutMenuItem { Id = 4, Title = "Modificar Cita", IconSource="Reserva.png", TargetType=typeof(ActualizarCita)},
                 });
             }
 

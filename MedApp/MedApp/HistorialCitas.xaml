@@ -6,36 +6,29 @@
     <ContentPage.Content>
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                <Label Text="Historial de Citas" FontSize="20" HorizontalOptions="Center" Margin="0,0,0,20" />
-                <!--<ListView x:Name="SearchResultsListView" SeparatorColor="Red">
+                <Label Text="Historial de Citas" HorizontalOptions="Center" Margin="0,0,0,20" FontSize="22" FontFamily="MavenPro" TextColor="Beige"/>
+
+                <Label Text="" />
+                <ListView x:Name="SearchResultsListView"
+                      HasUnevenRows="True">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <ViewCell.View>
-                                    <StackLayout>
-                                        <Label Text="{Binding Cita}" TextColor="Red" />
-                                        <Label Text="{Binding Fecha}" TextColor="Red" />
-                                        <Label Text="{Binding Hora}" TextColor="Red" />
-                                    </StackLayout>
-                                </ViewCell.View>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>-->
-                <ListView  x:Name="SearchResultsListView">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout BackgroundColor="#eee"
-                        Orientation="Vertical">
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Cita}"
-                                           TextColor="#03718c"
-                                           FontSize="14"/>
-                                        <Label Text="{Binding Fecha}"
-                                           HorizontalOptions="EndAndExpand"
-                                           TextColor="#503026"
-                                           FontSize="14"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Grid BackgroundColor="#112847"
+                                      HeightRequest="10"/>
+                                    <StackLayout Orientation="Vertical" Padding="20" BackgroundColor="Gainsboro">
+                                        <Label Text="{Binding fecha}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
+                                        <Label Text="{Binding hora}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
+                                        <Label>
+                                            <Label.FormattedText>
+                                                <FormattedString>
+                                                    <Span Text="{Binding nombre, StringFormat='Medico: {0}'}" FontAttributes="None" TextColor="Black" FontSize="17" FontFamily="MavenPro"/>
+                                                    <Span Text=" " FontAttributes="None" TextColor="Black" FontSize="17" FontFamily="MavenPro"/>
+                                                    <Span Text="{Binding apellidos}" FontAttributes="None" TextColor="Black" FontSize="17" FontFamily="MavenPro"/>
+                                                </FormattedString>
+                                            </Label.FormattedText>
+                                        </Label>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
