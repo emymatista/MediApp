@@ -19,8 +19,22 @@
                        FontFamily="MavenPro"
                    ></Label>
             </Grid>
-            <Entry x:Name="txtUsuario"  Placeholder="Username" TextColor="White" PlaceholderColor="Gray"></Entry>
-            <Entry x:Name="txtContrasena" Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray"></Entry>
+            <Label Text="" />
+            <Frame  BackgroundColor="Transparent"
+                    BorderColor="LightGray"
+                    CornerRadius="50"
+                    Padding="5">
+                <Entry x:Name="txtUsuario"  Placeholder="Username" TextColor="White" PlaceholderColor="Gray" HeightRequest="40" VerticalOptions="CenterAndExpand"></Entry>
+            </Frame>
+            <Label Text="" />
+            <Frame  BackgroundColor="Transparent"
+                    BorderColor="LightGray"
+                    CornerRadius="50"
+                    Padding="5">
+                <Entry x:Name="txtContrasena" Placeholder="Password" IsPassword="True" TextColor="White" PlaceholderColor="Gray" HeightRequest="40" VerticalOptions="CenterAndExpand"></Entry>
+            </Frame>
+            <Label Text="" />
+
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
@@ -40,7 +54,7 @@
                 CornerRadius="50"
                 Clicked="Button_Clicked"
                 ></Button>
-            
+
             <Label Text="" />
             <Label Text="" />
 

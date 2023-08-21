@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Text;
 using System.Threading.Tasks;
@@ -57,6 +58,40 @@ namespace MedApp.Datos
                 throw ex;
             }
 
+        }
+
+        public int GetTipoUsuario(string username)
+        {
+            SqlConnection con = null;
+            SqlCommand cmd = null;
+
+            try
+            {
+                using (con = Conexion.getInstance().ConexionBD())
+                {
+                    using (cmd = new SqlCommand("spTipoUsuario", con))
+                    {
+                        cmd.CommandType = CommandType.StoredProcedure;
+
+                        cmd.Parameters.AddWithValue("@prmDescrUsuario", username);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+
+                        object tipoUsuario = cmd.ExecuteScalar();
+
+                        if (tipoUsuario != null && tipoUsuario != DBNull.Value)
+                        {
+                            return (int)tipoUsuario;
+                        }
+
+                        return -1;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

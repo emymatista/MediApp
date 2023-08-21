@@ -32,7 +32,27 @@ namespace MedApp
 
                 if (loggedInUser != null)
                 {
+
                     await Navigation.PushAsync(new MenuPrincipal(loggedInUser.idUsuario));
+
+                    int tipoUsuario = authService.GetTipoUsuario(txtUsuario.Text);
+
+                    if (tipoUsuario == 1)
+                    {
+                        await Navigation.PushAsync(new MenuPrincipal(loggedInUser.idUsuario));
+                    }
+                    else if (tipoUsuario == 2)
+                    {
+                        //await Navigation.PushAsync(new MenuMedico());
+                    }
+                    else
+                    {
+                        await DisplayAlert("Vaya...", "Tipo de usuario no encontrado", "OK");
+                        return;
+                    }
+                    //await Navigation.PushAsync(new MenuPrincipal(loggedInUser.idUsuario));
+                    //await Navigation.PushAsync(new MenuMedico());
+
                 }
                 else
                 {
@@ -42,7 +62,7 @@ namespace MedApp
             }
             catch (Exception ex)
             {
-                await DisplayAlert("Vaya...", "Nombre usuario o contraseña incorrecta", "OK");
+                await DisplayAlert("Error", ex.Message, "OK");
                 return;
             }
 

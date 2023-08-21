@@ -9,11 +9,48 @@
                 <Label Text="" />
                 <Label Text="" />
                 <Label Text="Nuevo Usuario" FontSize="30" HorizontalOptions="Center" Margin="0,0,0,20" FontFamily="MavenPro" TextColor="Beige"/>
-                <Entry x:Name="nombre" Placeholder="Insertar Nombre" />
-                <Entry x:Name="apellidos" Placeholder="Insertar Apellidos" />
-                <Entry x:Name="codigoUsuario" Placeholder="Insertar Codigo" />
-                <Entry x:Name="descrUsuario" Placeholder="Nombre de Usuario" />
-                <Entry x:Name="claveUsuario" Placeholder="Contraseña" IsPassword="True"/>
+                <Frame  BackgroundColor="Transparent"
+                        BorderColor="LightGray"
+                        CornerRadius="50"
+                        Padding="5">
+                    <Entry x:Name="nombre" Placeholder="Insertar Nombre" />
+                </Frame>
+                <Label Text=""/>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Entry x:Name="apellidos" Placeholder="Insertar Apellidos" />
+                </Frame>
+                <Label Text=""/>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Picker x:Name="pkTipoUsuario" Title="Tipo Usuario"></Picker>
+                </Frame>
+                <Label Text=""/>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Entry x:Name="codigoUsuario" Placeholder="Insertar Codigo" />
+                </Frame>
+                <Label Text=""/>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Entry x:Name="descrUsuario" Placeholder="Nombre de Usuario" />
+                </Frame>
+                <Label Text=""/>
+                <Frame BackgroundColor="Transparent"
+                       BorderColor="LightGray"
+                       CornerRadius="50"
+                       Padding="5">
+                    <Entry x:Name="claveUsuario" Placeholder="Contraseña" IsPassword="True"/>
+                </Frame>
+
 
                 <Label Text="" />
 
@@ -23,10 +60,11 @@
                         BorderColor="Green"
                         BorderWidth="1.5"
                         CornerRadius="50"
-                        Clicked="Button_Clicked"/>
+                        Clicked="Button_Clicked"
+                        IsVisible="false"/>
 
                 <Label Text="" />
-                
+
                 <Button Text="Registrar"
                         TextColor="White"
                         BackgroundColor="Transparent"
