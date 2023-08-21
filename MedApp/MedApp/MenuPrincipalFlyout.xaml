@@ -59,6 +59,7 @@
                 BorderColor="Red"
                 BorderWidth="1.5"
                 CornerRadius="50"
+                FontSize="18"
                 Clicked="Button_Clicked">
         </Button>
     </StackLayout>

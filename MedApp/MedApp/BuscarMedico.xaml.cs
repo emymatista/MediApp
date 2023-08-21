@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using MedApp.DataModel;
 using MedApp.Datos;
 using System.Data.SqlClient;
 using System.Data;

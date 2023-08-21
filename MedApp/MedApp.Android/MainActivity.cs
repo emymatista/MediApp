@@ -24,5 +24,15 @@ namespace MedApp.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+        public override void OnConfigurationChanged(Android.Content.Res.Configuration newConfig)
+        {
+            if (newConfig.Orientation != Android.Content.Res.Orientation.Portrait)
+            {
+                RequestedOrientation = Android.Content.PM.ScreenOrientation.Portrait;
+            }
+
+            base.OnConfigurationChanged(newConfig);
+        }
     }
 }

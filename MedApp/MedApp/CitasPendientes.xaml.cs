@@ -1,5 +1,4 @@
-﻿using MedApp.DataModel;
-using MedApp.Datos;
+﻿using MedApp.Datos;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;

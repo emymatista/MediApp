@@ -1,5 +1,4 @@
-﻿using MedApp.DataModel;
-using MedApp.Datos;
+﻿using MedApp.Datos;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -62,44 +61,53 @@ namespace MedApp
 
         private async void Button_Clicked_1(object sender, EventArgs e)
         {
-            SqlConnection con = null;
-            SqlCommand cmd = null;
-            Medico medicoSelec = pkMedico.SelectedItem as Medico;
-            string dateString = selectedDate.ToString("yyyy-MM-dd");
-            string timeString = selectedTime.ToString();
-            int medicoSelecId = medicoSelec.idMedico;
-            using (con = Conexion.getInstance().ConexionBD())
+            if (string.IsNullOrEmpty(TelefonoPaciente.Text) || string.IsNullOrEmpty(txtMotivo.Text) || pkMedico.SelectedItem == null ||
+                pkEspecialidad.SelectedItem == null)
             {
-                using (cmd = new SqlCommand("spRegistrarCita", con))
+                await DisplayAlert("Alerta", "Hay datos faltantes", "Ok");
+                return;
+            }
+            else
+            {
+                SqlConnection con = null;
+                SqlCommand cmd = null;
+                Medico medicoSelec = pkMedico.SelectedItem as Medico;
+                string dateString = selectedDate.ToString("yyyy-MM-dd");
+                string timeString = selectedTime.ToString("hh\\:ss");
+                int medicoSelecId = medicoSelec.idMedico;
+                using (con = Conexion.getInstance().ConexionBD())
                 {
-                    cmd.CommandType = System.Data.CommandType.StoredProcedure;
-
-                    cmd.Parameters.AddWithValue("@prmTelefono", TelefonoPaciente.Text);
-                    cmd.Parameters.AddWithValue("@prmFecha", dateString);
-                    cmd.Parameters.AddWithValue("@prmHora", timeString);
-                    cmd.Parameters.AddWithValue("@prmMotivo", txtMotivo.Text);
-                    cmd.Parameters.AddWithValue("@prmIdMedico", medicoSelecId);
-                    cmd.Parameters.AddWithValue("@prmIdUsuario", userId);
-
-                    try
+                    using (cmd = new SqlCommand("spRegistrarCita", con))
                     {
-                        con.Open();
-                        cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception ex)
-                    {
-                        await DisplayAlert("Error", ex.Message, "Ok");
-                        throw;
-                    }
-                    finally
-                    {
-                        con.Close();
-                        await DisplayAlert("Exito", "Cita registrada con exito", "Ok");
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
 
-                        TelefonoPaciente.Text = "";
-                        txtMotivo.Text = "";
-                        IdMedico.Text = "";
-                        await Navigation.PushAsync(new MenuPrincipalDetail());
+                        cmd.Parameters.AddWithValue("@prmTelefono", TelefonoPaciente.Text);
+                        cmd.Parameters.AddWithValue("@prmFecha", dateString);
+                        cmd.Parameters.AddWithValue("@prmHora", timeString);
+                        cmd.Parameters.AddWithValue("@prmMotivo", txtMotivo.Text);
+                        cmd.Parameters.AddWithValue("@prmIdMedico", medicoSelecId);
+                        cmd.Parameters.AddWithValue("@prmIdUsuario", userId);
+
+                        try
+                        {
+                            con.Open();
+                            cmd.ExecuteNonQuery();
+                        }
+                        catch (Exception ex)
+                        {
+                            await DisplayAlert("Error", ex.Message, "Ok");
+                            throw;
+                        }
+                        finally
+                        {
+                            con.Close();
+                            await DisplayAlert("Exito", "Cita registrada con exito", "Ok");
+
+                            TelefonoPaciente.Text = "";
+                            txtMotivo.Text = "";
+                            IdMedico.Text = "";
+                            await Navigation.PushAsync(new MenuPrincipalDetail());
+                        }
                     }
                 }
             }

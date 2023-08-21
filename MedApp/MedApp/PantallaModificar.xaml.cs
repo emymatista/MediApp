@@ -146,6 +146,7 @@ namespace MedApp
                 pkEspecialidad.SelectedItem == null)
             {
                 await DisplayAlert("Alerta", "Hay datos faltantes", "Ok");
+                return;
             }
             else
             {
@@ -153,7 +154,7 @@ namespace MedApp
                 int idCita = selectedItem.idCita;
                 string telefono = TelefonoPaciente.Text;
                 string dateString = selectedDate.ToString("yyyy-MM-dd");
-                string timeString = selectedTime.ToString();
+                string timeString = selectedTime.ToString("hh\\:ss");
                 string motivo = txtMotivo.Text;
                 int medicoSelecId = medicoSelec.idMedico;
 
