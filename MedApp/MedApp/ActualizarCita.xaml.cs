@@ -50,12 +50,14 @@ namespace MedApp
 
                                 citas.Add(new ListarCitas
                                 {
+                                    idCita = Convert.ToInt32(reader["idCita"].ToString()),
                                     fecha = Convert.ToDateTime(reader["fecha"].ToString()).ToString("MM/dd/yyyy"),
                                     hora = reader["hora"].ToString(),
                                     motivo = reader["motivo"].ToString(),
                                     nombre = reader["nombre"].ToString(),
                                     apellidos = reader["apellidos"].ToString(),
                                     telefono = reader["telefono"].ToString(),
+                                    especialidad = reader["especialidad"].ToString()
                                 });
 
                             }

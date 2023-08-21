@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                <Label Text="Lista de Citas Pendientes" FontSize="22" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige"/>
+                <Label Text="Lista de Citas Pendientes" FontSize="22" FontFamily="MavenPro" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige"/>
                 <!--
                 <ListView  x:Name="SearchResultsListView">
                     <ListView.ItemTemplate>

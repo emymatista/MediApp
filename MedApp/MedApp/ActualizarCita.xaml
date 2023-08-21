@@ -6,7 +6,7 @@
     <ContentPage.Content>
         <ScrollView HeightRequest="3000">
             <StackLayout Padding="40" VerticalOptions="Center" HorizontalOptions="FillAndExpand">
-                <Label Text="Elige la cita que desea modificar" FontSize="22" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige"/>
+                <Label Text="Elige la cita que desea modificar" FontSize="22" HorizontalOptions="Center" Margin="0,0,0,20" TextColor="Beige" FontFamily="MavenPro"/>
                 <!--
                 <ListView  x:Name="SearchResultsListView">
                     <ListView.ItemTemplate>
@@ -41,6 +41,7 @@
                                     <Grid BackgroundColor="#112847"
                                       HeightRequest="10"/>
                                     <StackLayout Orientation="Vertical" Padding="20" BackgroundColor="Gainsboro">
+                                        <Label Text="{Binding idCita}" FontSize="17" TextColor="Black" FontFamily="MavenPro" IsVisible="False"/>
                                         <Label Text="{Binding telefono}" FontSize="17" TextColor="Black" FontFamily="MavenPro" IsVisible="False"/>
                                         <Label Text="{Binding fecha}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
                                         <Label Text="{Binding hora}" FontSize="17" TextColor="Black" FontFamily="MavenPro"/>
@@ -54,6 +55,7 @@
                                                 </FormattedString>
                                             </Label.FormattedText>
                                         </Label>
+                                        <Label Text="{Binding especialidad}" FontSize="17" TextColor="Black" FontFamily="MavenPro" IsVisible="False"/>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>

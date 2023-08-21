@@ -33,8 +33,6 @@ namespace MedApp
                 if (loggedInUser != null)
                 {
 
-                    await Navigation.PushAsync(new MenuPrincipal(loggedInUser.idUsuario));
-
                     int tipoUsuario = authService.GetTipoUsuario(txtUsuario.Text);
 
                     if (tipoUsuario == 1)

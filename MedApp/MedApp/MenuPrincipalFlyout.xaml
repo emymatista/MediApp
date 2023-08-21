@@ -54,6 +54,11 @@
     </ListView>
         <Button Text="Salir"
                 TextColor="Wheat"
+                BackgroundColor="#80FF7777"
+                FontFamily="MavenPro"
+                BorderColor="Red"
+                BorderWidth="1.5"
+                CornerRadius="50"
                 Clicked="Button_Clicked">
         </Button>
     </StackLayout>
